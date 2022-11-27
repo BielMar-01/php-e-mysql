@@ -2,7 +2,7 @@
 
 require "config.php";
 
-include 'src/Artigo.php';
+require 'src/Artigo.php';
 $artigo = new Artigo($mysql);
 $artigos = $artigo->exibirTodos();
 
