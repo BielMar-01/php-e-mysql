@@ -17,6 +17,13 @@ class Artigo
         $insereArtigo->execute();
     }
 
+    public function remover(string $id): void
+    {
+        $removerArtigo = $this->mysql->prepare('delete from artigos where id = ?;');
+        $removerArtigo->bind_param('s', $id);
+        $removerArtigo->execute();
+    }
+
     public function exibirTodos(): array
     {
         $resultado = $this->mysql->query('SELECT id, titulo, conteudo FROM artigos');
