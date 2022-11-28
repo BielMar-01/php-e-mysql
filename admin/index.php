@@ -26,7 +26,7 @@ $artigos = $artigo->exibirTodos();
                     <p><?php echo $art['titulo']; ?></p>
                     <nav>
                         <a class="botao" href="editar-artigo.html?id=<?php echo $art['id']; ?>">Editar</a>
-                        <a class="botao" href="excluir-artigo.html?id=<?php echo $art['id']; ?>">Excluir</a>
+                        <a class="botao" href="excluir-artigo.php?id=<?php echo $art['id']; ?>">Excluir</a>
                     </nav>
                 </div>
             <?php } ?>
