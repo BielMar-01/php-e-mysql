@@ -4,6 +4,14 @@ require '../config.php';
 require '../src/Artigo.php';
 require '../src/redireciona.php';
 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $artigo = new Artigo($mysql);
+    $artigo->editar($_POST['id'], $_POST['titulo'], $_POST['conteudo']);
+
+    redireciona('/blog/admin/index.php');
+}
+
+
 $artigo = new Artigo($mysql);
 $art = $artigo->encontrarPorId($_GET['id']);
 
@@ -24,14 +32,14 @@ $art = $artigo->encontrarPorId($_GET['id']);
         <form action="editar-artigo.php" method="post">
             <p>
                 <label for="titulo">Digite o novo título do artigo</label>
-                <input class="campo-form" type="text" name="titulo" id="titulo" value="<?php echo$art['titulo']?>" />
+                <input class="campo-form" type="text" name="titulo" id="titulo" value="<?php echo $art['titulo']?>" />
             </p>
             <p>
                 <label for="conteudo">Digite o novo conteúdo do artigo</label>
-                <textarea class="campo-form" type="text" name="conteudo" id="titulo"><?php echo$art['conteudo']?></textarea>
+                <textarea class="campo-form" type="text" name="conteudo" id="titulo"><?php echo $art['conteudo']?></textarea>
             </p>
             <p>
-                <input type="hidden" name="id" value="" />
+                <input type="hidden" name="id" value="<?php echo $art['id']; ?>" />
             </p>
             <p>
                 <button class="botao">Editar Artigo</button>

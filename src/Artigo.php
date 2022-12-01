@@ -10,6 +10,13 @@ class Artigo
         $this->mysql = $mysql;
     }
 
+    public function editar(string $id, string $titulo, string $conteudo): void
+    {
+        $editarArtigo = $this->mysql->prepare('UPDATE artigos SET titulo = ?, conteudo = ? where id = ?');
+        $editarArtigo->bind_param('sss', $titulo, $conteudo, $id);
+        $editarArtigo->execute();
+    }
+
     public function adicionar(string $titulo, string $conteudo): void
     {
         $insereArtigo = $this->mysql->prepare('insert into artigos (titulo, conteudo) values (?, ?);');
