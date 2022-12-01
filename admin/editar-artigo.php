@@ -26,6 +26,7 @@ $art = $artigo->encontrarPorId($_GET['id']);
     <title>Editar Artigo</title>
 </head>
 
+
 <body>
     <div id="container">
         <h1>Editar Artigo</h1>
